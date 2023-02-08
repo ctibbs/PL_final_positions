@@ -83,7 +83,7 @@ plt.grid(True)
 plt.xticks(list(PL_positions.keys()), list(PL_positions.keys()), rotation='vertical')
 plt.ylim(max(PL_positions.values()),1)
 plt.plot(PL_positions.keys(), PL_positions.values(), 'o--r')
-plt.savefig('Final_PL_League_Table_Positions_'+PL_team+'.pdf')
+plt.savefig('Final_PL_League_Table_Positions_'+PL_team)
 plt.clf()
 
 
