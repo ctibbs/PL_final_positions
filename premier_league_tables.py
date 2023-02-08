@@ -22,9 +22,6 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 import py_local_settings
 
-##Define paths and filenames
-path = Path(py_local_settings.python_path+'\\Premier_League\\Wikipedia\\')
-
 ##Identify the team
 PL_team = sys.argv[1]
 
@@ -86,7 +83,7 @@ plt.grid(True)
 plt.xticks(list(PL_positions.keys()), list(PL_positions.keys()), rotation='vertical')
 plt.ylim(max(PL_positions.values()),1)
 plt.plot(PL_positions.keys(), PL_positions.values(), 'o--r')
-plt.savefig(path.joinpath('Final_PL_League_Table_Positions_'+PL_team+'.pdf'))
+plt.savefig('Final_PL_League_Table_Positions_'+PL_team+'.pdf')
 plt.clf()
 
 
