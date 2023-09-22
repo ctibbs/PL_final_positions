@@ -20,6 +20,7 @@ import sys
 from http import HTTPStatus
 from pathlib import Path
 from bs4 import BeautifulSoup
+from io import StringIO
 import py_local_settings
 
 ##Identify the team
@@ -52,7 +53,7 @@ for PL_year in PL_years:
         table = bs_r.find_all('table', {'class':'wikitable', 'style':'text-align:center;'})
 
         ##Convert the data table to DataFrames
-        df = pd.read_html(str(table))
+        df = pd.read_html(StringIO(str(table)))
         df = pd.DataFrame(df[0])
        
         ##Identify column containing the teams
@@ -70,7 +71,7 @@ for PL_year in PL_years:
 
         if len(team_exists) == 1:
             ##Extract team position and collate into dictionary
-            PL_positions[PL_year+1] = int(df[df['Team'].str.startswith(PL_team)]['Pos'])
+            PL_positions[PL_year+1] = int(df[df['Team'].str.startswith(PL_team)]['Pos'].iloc[0])
         else:
             ##Add NAN value for position
             PL_positions[PL_year+1] = float('nan')
