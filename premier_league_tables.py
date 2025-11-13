@@ -6,6 +6,7 @@
 ##Usage (interactive): >python -i premier_league_tables.py <PL team>
 ##
 ##Written by C. Tibbs (Nov 2022)
+##Updated by C. Tibbs (Sep 2025)
 ##
 
 ##Import Python packages
@@ -21,7 +22,7 @@ from http import HTTPStatus
 from pathlib import Path
 from bs4 import BeautifulSoup
 from io import StringIO
-import py_local_settings
+#import py_local_settings
 
 ##Identify the team
 PL_team = sys.argv[1]
@@ -38,7 +39,7 @@ for PL_year in PL_years:
     
     ##Request the webpage from the URL
     r = requests.get(url)
-
+    
     ##Check if call was unsuccessful
     if r.status_code != HTTPStatus.OK:
         print('Problem with this call...')
@@ -86,31 +87,3 @@ plt.ylim(max(PL_positions.values()),1)
 plt.plot(PL_positions.keys(), PL_positions.values(), 'o--r')
 plt.savefig('Final_PL_League_Table_Positions_'+PL_team)
 plt.clf()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-        
